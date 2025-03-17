@@ -1,0 +1,35 @@
+.bg-light-blue {
+    background-color: #ADD8E6;
+}
+.navbar-brand, .nav-link {
+    color: #fff !important;
+}
+.btn-primary {
+    background-color: #87CEEB;
+    border: none;
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .card {
+        margin-bottom: 15px;
+    }
+    .container {
+        padding: 10px;
+    }
+    .table {
+        font-size: 14px;
+    }
+    .table img {
+        width: 30px;
+    }
+    #search-form .col-sm-6 {
+        margin-bottom: 10px;
+    }
+}

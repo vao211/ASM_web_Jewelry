@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Sức</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
+        <a class="navbar-brand" href="#">Jewelry Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../backend/login.php">Đăng nhập</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/register.php">Đăng ký</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/profile.php">Hồ sơ</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/order_history.php">Lịch sử đơn hàng</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/cart.php">Giỏ hàng</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/admin.php">Admin</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/logout.php">Đăng xuất</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Sản phẩm</h1>
+        <form id="search-form" class="mb-4">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <input type="text" class="form-control" id="search" placeholder="Tìm kiếm sản phẩm..." name="search">
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <select class="form-control" id="category" name="category">
+                        <option value="">Tất cả danh mục</option>
+                        <option value="1">Men's Fashion</option>
+                        <option value="2">Women's Fashion</option>
+                        <option value="3">Accessories</option>
+                    </select>
+                </div>
+                <div class="col-md-2 col-sm-6 mb-3">
+                    <input type="number" class="form-control" id="min-price" placeholder="Giá tối thiểu" name="min_price">
+                </div>
+                <div class="col-md-2 col-sm-6 mb-3">
+                    <input type="number" class="form-control" id="max-price" placeholder="Giá tối đa" name="max_price">
+                </div>
+                <div class="col-md-2 col-sm-6 mb-3">
+                    <button type="submit" class="btn btn-primary w-100">Tìm</button>
+                </div>
+            </div>
+        </form>
+        <div class="row" id="product-list"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
