@@ -57,7 +57,7 @@ $result = $conn->query($sql);
                 <?php } ?>
             </tbody>
         </table>
-        <a href="checkout.php" class="btn btn-primary">Thanh toán</a>
+        <a href="payment.php" class="btn btn-primary">Thanh toán</a>
     </div>
 </body>
 </html>

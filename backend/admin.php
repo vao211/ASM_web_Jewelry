@@ -90,6 +90,7 @@ if (isset($_GET['edit'])) {
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="logout.php">Đăng xuất</a></li>
+                <li class="nav-item"><a class="nav-link" href="index_admin.php">View website</a></li>
             </ul>
         </div>
     </nav>

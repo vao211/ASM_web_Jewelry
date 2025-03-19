@@ -17,13 +17,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
+            if ($user['role'] == 'admin'){
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = $user['role'];
+                header("Location: ../backend/admin.php");
+                echo "Login success!";
+            }
+            else{
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = $user['role'];
 
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['role'] = $user['role'];
-
-        header("Location: ../frontend/index.html");
-            echo "Login success!";
+                header("Location: ../frontend/user.html");
+                echo "Login success!";
         } 
+    }
 
         else {
             echo "Sai mật khẩu!";
@@ -34,6 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>

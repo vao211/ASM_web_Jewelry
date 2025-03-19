@@ -1,3 +1,14 @@
+<?php
+session_start();
+include 'config.php';
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../frontend/index.html");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -15,13 +26,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="../backend/login.php">Đăng nhập</a></li>
-                <li class="nav-item"><a class="nav-link" href="../backend/register.php">Đăng ký</a></li>
                 <li class="nav-item"><a class="nav-link" href="../backend/profile.php">Hồ sơ</a></li>
                 <li class="nav-item"><a class="nav-link" href="../backend/order_history.php">Lịch sử đơn hàng</a></li>
                 <li class="nav-item"><a class="nav-link" href="../backend/cart.php">Giỏ hàng</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" href="../backend/admin.php">Admin</a></li> -->
-                <!-- <li class="nav-item"><a class="nav-link" href="../backend/logout.php">Đăng xuất</a></li> -->
+                <li class="nav-item"><a class="nav-link" href="../backend/admin.php">Admin</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/logout.php">Đăng xuất</a></li>
             </ul>
         </div>
     </nav>
