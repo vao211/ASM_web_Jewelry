@@ -31,9 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['edit_id'])) {
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         $sql = "INSERT INTO products (category_id, name, price, image, description, stock) 
                 VALUES ('$category_id', '$name', '$price', '$image_name', '$description', '$stock')";
+
         if ($conn->query($sql)) {
             header("Location: admin.php");
-        } else {
+        } 
+        else {
             echo "Lỗi: " . $conn->error;
         }
     }
@@ -98,9 +100,11 @@ if (isset($_GET['edit'])) {
     <div class="container mt-4">
         <h1>Quản lý sản phẩm</h1>
         <form action="admin.php" method="POST" enctype="multipart/form-data" class="mb-4">
+
             <?php if ($edit_product) { ?>
                 <input type="hidden" name="edit_id" value="<?php echo $edit_product['id']; ?>">
             <?php } ?>
+
             <div class="mb-3">
                 <label for="name" class="form-label">Tên sản phẩm</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?php echo $edit_product ? $edit_product['name'] : ''; ?>" required>
@@ -108,11 +112,13 @@ if (isset($_GET['edit'])) {
             <div class="mb-3">
                 <label for="category_id" class="form-label">Danh mục</label>
                 <select class="form-control" id="category_id" name="category_id" required>
+
                     <?php while ($cat = $categories->fetch_assoc()) { ?>
                         <option value="<?php echo $cat['id']; ?>" <?php echo $edit_product && $edit_product['category_id'] == $cat['id'] ? 'selected' : ''; ?>>
                             <?php echo $cat['name']; ?>
                         </option>
                     <?php } $categories->data_seek(0); ?>
+
                 </select>
             </div>
             <div class="mb-3">
