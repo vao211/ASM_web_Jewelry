@@ -5,6 +5,6 @@ if ($conn->connect_error) {
 }
 
 else{
-    echo"Connect Success";
+    // echo"Connect Success";
 }
 ?>
