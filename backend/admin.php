@@ -53,13 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
         <a class="navbar-brand" href="#">Admin Panel</a>
-        <div class="collapse navbar-collapse">
+        <!-- <div class="collapse navbar-collapse"> --> <!--mobile view -->
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="logout.php">Sign out</a></li>
                 <li class="nav-item"><a class="nav-link" href="index_admin.php">View website</a></li>
                 <li class="nav-item"><a class="nav-link" href="admin_users.php">User manager</a></li>
             </ul>
-        </div>
+        <!-- </div> -->
     </nav>
 
     <div class="container mt-4">
