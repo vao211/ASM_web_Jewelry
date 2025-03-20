@@ -9,6 +9,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 $sql = "SELECT p.*, c.name AS category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id";
 $result = $conn->query($sql);
+
+//lay cate
 $categories = $conn->query("SELECT * FROM categories");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -69,9 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="mb-3">
                 <label for="category_id" class="form-label">Danh mục</label>
                 <select class="form-control" id="category_id" name="category_id" required>
-                    <?php while ($cat = $categories->fetch_assoc()) { ?>
+                    <?php 
+                    while ($cat = $categories->fetch_assoc()) { ?>
                         <option value="<?php echo $cat['id']; ?>"><?php echo $cat['name']; ?></option>
-                    <?php } $categories->data_seek(0); ?>
+                    <?php 
+                } $categories->data_seek(0); ?>
                 </select>
             </div>
             <div class="mb-3">

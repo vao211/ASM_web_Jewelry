@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1>Quét mã QR để thanh toán</h1>
             <img src="qr.png" alt="QR Code">
             <br><br>
-            <button onclick="alert('Thanh toán thành công!'); window.location.href='../frontend/index.html'" class="btn btn-primary">OK</button>
+            <button onclick="alert('Thanh toán thành công!'); window.location.href='../frontend/user.html'" class="btn btn-primary">OK</button>
         <?php } ?>
     </div>
 </body>

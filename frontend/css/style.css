@@ -1,5 +1,5 @@
 .bg-light-blue {
-    background-color: #ADD8E6;
+    background-color: #2f55d1;
 }
 .navbar-brand, .nav-link {
     color: #fff !important;
@@ -8,9 +8,29 @@
     background-color: #87CEEB;
     border: none;
 }
+
+.card {
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+    justify-content: space-between; 
+}
+
 .card-img-top {
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    width: 100%; 
+    object-fit: contain; 
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column; 
+    flex: 1; 
+    justify-content: space-between; 
+}
+
+.card-title, .card-text {
+    margin: 0;
 }
 
 @media (max-width: 768px) {

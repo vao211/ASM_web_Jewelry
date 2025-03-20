@@ -1,4 +1,4 @@
-add_admin.php
-add_catgetory.php
-database.sql
-*.png
+/add_admin.php
+/add_catgetory.php
+/database.sql
+/*.png
