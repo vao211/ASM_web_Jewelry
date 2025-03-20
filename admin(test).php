@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_id'])) {
             $sql .= ", image='$image_name'";
         }
     }
+    
     $sql .= " WHERE id=$edit_id";
     if ($conn->query($sql)) {
         header("Location: admin.php");

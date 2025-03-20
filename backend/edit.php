@@ -7,12 +7,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
+//_POST trong form
 if (!isset($_GET['id']) && !isset($_POST['edit_id'])) {
     header("Location: admin.php");
     exit();
 }
 
-$edit_id = isset($_GET['id']) ? $_GET['id'] : $_POST['edit_id'];
+if (isset($_GET['id'])) {
+    $edit_id = $_GET['id'];
+} 
+elseif (isset($_POST['edit_id'])) {
+    $edit_id = $_POST['edit_id'];
+}
+else {
+    $edit_id = null;
+}
+
 $edit_result = $conn->query("SELECT * FROM products WHERE id=$edit_id");
 $edit_product = $edit_result->fetch_assoc();
 $categories = $conn->query("SELECT * FROM categories");
@@ -68,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container mt-4">
         <h1>Chỉnh sửa sản phẩm</h1>
         <form action="edit.php" method="POST" enctype="multipart/form-data" class="mb-4">
-            <input type="hidden" name="edit_id" value="<?php echo $edit_product['id']; ?>">
+            <input type="hidden" name="edit_id" value="<?php echo $edit_product['id']; ?>">    <!-- edit_id = $edit_prodct['id'] --->
             <div class="mb-3">
                 <label for="name" class="form-label">Tên sản phẩm</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?php echo $edit_product['name']; ?>" required>

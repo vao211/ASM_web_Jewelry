@@ -55,8 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a class="navbar-brand" href="#">Admin Panel</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="logout.php">Đăng xuất</a></li>
+                <li class="nav-item"><a class="nav-link" href="logout.php">Sign out</a></li>
                 <li class="nav-item"><a class="nav-link" href="index_admin.php">View website</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin_users.php">User manager</a></li>
             </ul>
         </div>
     </nav>
@@ -75,26 +76,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     while ($cat = $categories->fetch_assoc()) { ?>
                         <option value="<?php echo $cat['id']; ?>"><?php echo $cat['name']; ?></option>
                     <?php 
-                } $categories->data_seek(0); ?>
+                } $categories->data_seek(0);?>
                 </select>
             </div>
+
             <div class="mb-3">
                 <label for="price" class="form-label">Giá (VND)</label>
                 <input type="number" class="form-control" id="price" name="price" required>
             </div>
+
             <div class="mb-3">
                 <label for="stock" class="form-label">Số lượng tồn kho</label>
                 <input type="number" class="form-control" id="stock" name="stock" required>
             </div>
+
             <div class="mb-3">
                 <label for="image" class="form-label">Ảnh sản phẩm</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
             </div>
+
             <div class="mb-3">
                 <label for="description" class="form-label">Mô tả</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
             </div>
+
             <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+
         </form>
 
         <h2>Danh sách sản phẩm</h2>

@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container mt-5">
         <h1>Đăng ký</h1>
-        <form method="POST"> POST
+        <form method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Tên đăng nhập</label>
                 <input type="text" class="form-control" id="username" name="username" required>
