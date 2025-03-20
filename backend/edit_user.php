@@ -23,6 +23,18 @@ else {
     $edit_id = null;
 }
 
+//check exist and valid id
+if ($edit_id <= 0) {
+    echo "Invalid user ID!";
+    exit();
+}
+$edit_result = $conn->query("SELECT * FROM users WHERE id=$edit_id");
+if (!$edit_result || $edit_result->num_rows == 0) {
+    echo "User not existed !";
+    exit();
+}
+
+$edit_user = $edit_result->fetch_assoc();
 $edit_result = $conn->query("SELECT * FROM users WHERE id=$edit_id");
 $edit_user = $edit_result->fetch_assoc();
 

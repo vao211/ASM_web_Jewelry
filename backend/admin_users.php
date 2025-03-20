@@ -59,7 +59,7 @@ $result = $conn->query($sql);
                         <td><?php echo $row['address']; ?></td>
                         <td><?php echo $row['phone']; ?></td>
                         <td><?php echo $row['role']; ?></td>
-                        <td><?php echo $row['create_at']; ?></td>
+                        <td><?php echo $row['created_at']; ?></td>
                         <td>
                             <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
                             <a href="delete_user.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Xóa</a>

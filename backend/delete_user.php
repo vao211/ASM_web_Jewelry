@@ -7,7 +7,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-$id = $_GET['id'];
+//ko tu xoa acc cua minh
+$id = (int)$_GET['id'];
+if ($id == $_SESSION['user_id']) {
+    echo "You cannot delete your account!";
+    exit();
+}
+
 $sql = "DELETE FROM users WHERE id = $id";
 if ($conn->query($sql)) {
     header("Location: admin_users.php");
