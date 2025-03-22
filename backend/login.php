@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['role'] = $user['role'];
 
-                header("Location: ../frontend/user.html");
+                header("Location: ../frontend/user.php");
                 echo "Login success!";
         } 
     }

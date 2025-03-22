@@ -1,4 +1,19 @@
 <!-- Them tinh nang kiem tra admin de tu dong chuyen sang admin.php (sau khi thanh toan tu dong chuyen sang user)-->
+<?php
+session_start();
+include 'config.php';
+
+//chua dang nhap -> index.html
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ./index.html");
+    exit();
+}
+//admin -> index_admin
+if ($_SESSION['role'] === 'admin') {
+    header("Location: /backend/index_admin.php");
+    exit();
+} 
+?>
 
 <!DOCTYPE html>
 <html lang="vi">

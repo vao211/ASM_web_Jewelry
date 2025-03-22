@@ -26,8 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check === false || $_FILES["image"]["size"] > 5000000 || !in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
+    if ($check === false || $_FILES["image"]["size"] > 200000000 || !in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
         die("File ảnh không hợp lệ!");
+        
     }
 
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
