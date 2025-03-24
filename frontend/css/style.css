@@ -14,6 +14,13 @@
     flex-direction: column; 
     height: 100%; 
     justify-content: space-between; 
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    z-index: 10;
 }
 
 .card-img-top {
@@ -51,5 +58,54 @@
     }
     #search-form .col-sm-6 {
         margin-bottom: 10px;
+    }
+}
+
+
+
+.carousel {
+    margin-bottom: 20px; /
+}
+
+.carousel-item img {
+    height: 400px; 
+    object-fit: cover;
+    object-position: center; 
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .card {
+        margin-bottom: 15px;
+    }
+    .container {
+        padding: 10px;
+    }
+    .table {
+        font-size: 14px;
+    }
+    .table img {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        object-position: center;
+    }
+    #search-form .col-sm-6 {
+        margin-bottom: 10px;
+    }
+    .card-img-top {
+        width: 100%;
+        height: 200px;
+    }
+    .carousel-item img {
+        height: 200px;
     }
 }

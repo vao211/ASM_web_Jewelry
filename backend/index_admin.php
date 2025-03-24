@@ -35,6 +35,41 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
         </div>
     </nav>
 
+    <!-- Carousel -->
+    <div id="introCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/frontend/asset/slide1.jpg" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Chào mừng đến với Jewelry Store</h5>
+                    <p>Khám phá những món trang sức tinh tế nhất.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/frontend/asset/slide2.jpg" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Thiết kế độc đáo</h5>
+                    <p>Trang sức được chế tác thủ công với sự tỉ mỉ.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/frontend/asset/slide3.png" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Ưu đãi đặc biệt</h5>
+                    <p>Giảm giá lên đến 20% trong tuần này!</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#introCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#introCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
     <div class="container mt-4">
         <h1>Sản phẩm</h1>
         <form id="search-form" class="mb-4">
