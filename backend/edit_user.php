@@ -28,14 +28,18 @@ if ($edit_id <= 0) {
     echo "Invalid user ID!";
     exit();
 }
-$edit_result = $conn->query("SELECT * FROM users WHERE id=$edit_id");
-if (!$edit_result || $edit_result->num_rows == 0) {
-    echo "User not existed !";
+
+$sql = "SELECT * FROM users WHERE id = ?";
+$stm = $conn->prepare($sql);
+$stm->bind_param("i", $edit_id);
+$stm->execute();
+$edit_result = $stm->get_result();
+
+if ($edit_result->num_rows == 0) {
+    echo "User does not exist!";
     exit();
 }
 
-$edit_user = $edit_result->fetch_assoc();
-$edit_result = $conn->query("SELECT * FROM users WHERE id=$edit_id");
 $edit_user = $edit_result->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,11 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phone = $_POST['phone'];
     $role = $_POST['role'];
 
-    $sql = "UPDATE users SET username='$username', email='$email', full_name='$full_name', address='$address', phone='$phone', role='$role' WHERE id=$edit_id";
-    if ($conn->query($sql)) {
+    $sql = "UPDATE users SET username = ?, email = ?, full_name = ?, address = ?, phone = ?, role = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    
+    $stmt->bind_param("ssssssi", $username, $email, $full_name, $address, $phone, $role, $edit_id);
+
+    if ($stmt->execute()) {
         header("Location: admin_users.php");
+        exit(); 
     } else {
-        echo "Lỗi: " . $conn->error;
+        echo "Error: " . $conn->error;
     }
 }
 ?>

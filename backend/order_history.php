@@ -8,13 +8,16 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$sql = "SELECT o.*, od.product_id, od.quantity, od.price, p.name 
-        FROM orders o 
-        LEFT JOIN order_details od ON o.id = od.order_id 
-        LEFT JOIN products p ON od.product_id = p.id 
-        WHERE o.user_id = $user_id 
-        ORDER BY o.created_at DESC";
-$result = $conn->query($sql);
+
+$stmt = $conn->prepare("SELECT o.*, od.product_id, od.quantity, od.price, p.name, o.admin_message 
+                        FROM orders o 
+                        LEFT JOIN order_details od ON o.id = od.order_id 
+                        LEFT JOIN products p ON od.product_id = p.id 
+                        WHERE o.user_id = ? 
+                        ORDER BY o.created_at DESC");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
