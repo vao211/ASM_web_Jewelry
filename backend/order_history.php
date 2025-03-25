@@ -17,26 +17,26 @@ $sql = "SELECT o.*, od.product_id, od.quantity, od.price, p.name
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lịch sử đơn hàng</title>
+    <title>Order History</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../frontend/css/style.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Lịch sử đơn hàng</h1>
+        <h1>Order History</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Mã đơn</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
-                    <th>Phương thức</th>
-                    <th>Ngày đặt</th>
-                    <th>Sản phẩm</th>
+                    <th>Order ID</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Payment Method</th>
+                    <th>Order Date</th>
+                    <th>Products</th>
                 </tr>
             </thead>
             <tbody>

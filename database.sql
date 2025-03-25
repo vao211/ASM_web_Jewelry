@@ -60,6 +60,8 @@ CREATE TABLE order_details (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
+ALTER TABLE orders
+ADD COLUMN admin_message TEXT;
 
 INSERT INTO categories (name, description) VALUES 
 ('Men''s Fashion', 'Thời trang nam'),

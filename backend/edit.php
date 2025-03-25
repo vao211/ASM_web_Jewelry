@@ -3,11 +3,11 @@ session_start();
 include 'config.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../frontend/index.html");
+    header("Location: ../index.html");
     exit();
 }
 
-//_POST trong form
+// Check for _POST in form
 if (!isset($_GET['id']) && !isset($_POST['edit_id'])) {
     header("Location: admin.php");
     exit();
@@ -51,16 +51,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($conn->query($sql)) {
         header("Location: admin.php");
     } else {
-        echo "Lỗi: " . $conn->error;
+        echo "Error: " . $conn->error;
     }
 }
 ?>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chỉnh sửa sản phẩm</title>
+    <title>Edit Product</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../frontend/css/style.css">
 </head>
@@ -69,22 +69,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a class="navbar-brand" href="#">Admin Panel</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="logout.php">Đăng xuất</a></li>
-                <li class="nav-item"><a class="nav-link" href="admin.php">Quản lý sản phẩm</a></li>
+                <li class="nav-item"><a class="nav-link" href="logout.php">Log Out</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin.php">Manage Products</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container mt-4">
-        <h1>Chỉnh sửa sản phẩm</h1>
+        <h1>Edit Product</h1>
         <form action="edit.php" method="POST" enctype="multipart/form-data" class="mb-4">
-            <input type="hidden" name="edit_id" value="<?php echo $edit_product['id']; ?>">    <!-- edit_id = $edit_prodct['id'] --->
+            <input type="hidden" name="edit_id" value="<?php echo $edit_product['id']; ?>">    <!-- edit_id = $edit_product['id'] --->
             <div class="mb-3">
-                <label for="name" class="form-label">Tên sản phẩm</label>
+                <label for="name" class="form-label">Product Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?php echo $edit_product['name']; ?>" required>
             </div>
             <div class="mb-3">
-                <label for="category_id" class="form-label">Danh mục</label>
+                <label for="category_id" class="form-label">Category</label>
                 <select class="form-control" id="category_id" name="category_id" required>
                     <?php while ($cat = $categories->fetch_assoc()) { ?>
                         <option value="<?php echo $cat['id']; ?>" <?php echo $edit_product['category_id'] == $cat['id'] ? 'selected' : ''; ?>>
@@ -94,24 +94,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </select>
             </div>
             <div class="mb-3">
-                <label for="price" class="form-label">Giá (VND)</label>
+                <label for="price" class="form-label">Price (VND)</label>
                 <input type="number" class="form-control" id="price" name="price" value="<?php echo $edit_product['price']; ?>" required>
             </div>
             <div class="mb-3">
-                <label for="stock" class="form-label">Số lượng tồn kho</label>
+                <label for="stock" class="form-label">Stock Quantity</label>
                 <input type="number" class="form-control" id="stock" name="stock" value="<?php echo $edit_product['stock']; ?>" required>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Ảnh sản phẩm (Để trống nếu không thay đổi)</label>
+                <label for="image" class="form-label">Product Image (Leave blank if not changing)</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*">
                 <img src="../uploads/<?php echo $edit_product['image']; ?>" width="100" class="mt-2">
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Mô tả</label>
+                <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description"><?php echo $edit_product['description']; ?></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Cập nhật</button>
-            <a href="admin.php" class="btn btn-secondary">Hủy</a>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="admin.php" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </body>

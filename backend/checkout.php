@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: payment.php"); 
         exit();
     } else {
-        $error = "Có lỗi xảy ra khi lưu thông tin.";
+        $error = "An error occurred while saving the information.";
     }
     $stmt->close();
 }

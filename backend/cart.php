@@ -4,7 +4,7 @@ include 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        echo json_encode(['status' => 'error', 'message' => 'Vui lòng đăng nhập!']);
+        echo json_encode(['status' => 'error', 'message' => 'Please login first!']);
         exit();
     }
     header("Location: login.php");

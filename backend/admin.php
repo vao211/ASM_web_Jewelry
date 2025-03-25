@@ -3,7 +3,7 @@ session_start();
 include 'config.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../frontend/index.html");
+    header("Location: ../index.html");
     exit();
 }
 
@@ -59,19 +59,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <li class="nav-item"><a class="nav-link" href="logout.php">Sign out</a></li>
                 <li class="nav-item"><a class="nav-link" href="index_admin.php">View website</a></li>
                 <li class="nav-item"><a class="nav-link" href="admin_users.php">User manager</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin_orders.php">Order manager</a></li>
             </ul>
         <!-- </div> -->
     </nav>
 
     <div class="container mt-4">
-        <h1>Quản lý sản phẩm</h1>
+        <h1>Product manager</h1>
         <form action="admin.php" method="POST" enctype="multipart/form-data" class="mb-4">
             <div class="mb-3">
-                <label for="name" class="form-label">Tên sản phẩm</label>
+                <label for="name" class="form-label">Product name</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="mb-3">
-                <label for="category_id" class="form-label">Danh mục</label>
+                <label for="category_id" class="form-label">Category</label>
                 <select class="form-control" id="category_id" name="category_id" required>
                     <?php 
                     while ($cat = $categories->fetch_assoc()) { ?>
@@ -82,30 +83,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Giá (VND)</label>
+                <label for="price" class="form-label">Cost (VND)</label>
                 <input type="number" class="form-control" id="price" name="price" required>
             </div>
 
             <div class="mb-3">
-                <label for="stock" class="form-label">Số lượng tồn kho</label>
+                <label for="stock" class="form-label">Stocks</label>
                 <input type="number" class="form-control" id="stock" name="stock" required>
             </div>
 
             <div class="mb-3">
-                <label for="image" class="form-label">Ảnh sản phẩm</label>
+                <label for="image" class="form-label">Image</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Mô tả</label>
+                <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+            <button type="submit" class="btn btn-primary">Add product</button>
 
         </form>
 
-        <h2>Danh sách sản phẩm</h2>
+        <h2>List of Product</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -130,8 +131,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <td><img src="../uploads/<?php echo $row['image']; ?>" width="50"></td>
                         <td><?php echo $row['description']; ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
-                            <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Xóa</a>
+                            <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 <?php } ?>

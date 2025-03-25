@@ -20,25 +20,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($conn->query($sql)) {
         header("Location: profile.php");
     } else {
-        echo "Lỗi: " . $conn->error;
+        echo "Error: " . $conn->error;
     }
 }
 ?>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hồ sơ</title>
+    <title>Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../frontend/css/style.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Hồ sơ cá nhân</h1>
+        <h1>Personal Profile</h1>
         <form method="POST">
             <div class="mb-3">
-                <label for="username" class="form-label">Tên đăng nhập</label>
+                <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" value="<?php echo $user['username']; ?>" disabled>
             </div>
             <div class="mb-3">
@@ -46,18 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="email" class="form-control" id="email" value="<?php echo $user['email']; ?>" disabled>
             </div>
             <div class="mb-3">
-                <label for="full_name" class="form-label">Họ tên</label>
+                <label for="full_name" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="full_name" name="full_name" value="<?php echo $user['full_name']; ?>">
             </div>
             <div class="mb-3">
-                <label for="address" class="form-label">Địa chỉ</label>
+                <label for="address" class="form-label">Address</label>
                 <textarea class="form-control" id="address" name="address"><?php echo $user['address']; ?></textarea>
             </div>
             <div class="mb-3">
-                <label for="phone" class="form-label">Số điện thoại</label>
+                <label for="phone" class="form-label">Phone Number</label>
                 <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $user['phone']; ?>">
             </div>
-            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 </body>

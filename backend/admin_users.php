@@ -3,7 +3,7 @@ session_start();
 include 'config.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../frontend/index.html");
+    header("Location: ../index.html");
     exit();
 }
 
@@ -30,6 +30,7 @@ $result = $conn->query($sql);
                 <li class="nav-item"><a class="nav-link" href="logout.php">Sign out</a></li>
                 <li class="nav-item"><a class="nav-link" href="index_admin.php">View website</a></li>
                 <li class="nav-item"><a class="nav-link" href="admin.php">Products manager</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin_orders.php">Order manager</a></li>
             </ul>
         <!-- </div> -->
     </nav>
@@ -61,8 +62,8 @@ $result = $conn->query($sql);
                         <td><?php echo $row['role']; ?></td>
                         <td><?php echo $row['created_at']; ?></td>
                         <td>
-                            <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
-                            <a href="delete_user.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Xóa</a>
+                            <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="delete_user.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 <?php }?>

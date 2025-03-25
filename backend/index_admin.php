@@ -3,18 +3,18 @@ session_start();
 include 'config.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../frontend/index.html");
+    header("Location: ../index.html");
     exit();
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Sức</title>
+    <title>Jewelry Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/frontend/css/style.css">
 </head>
@@ -26,11 +26,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="../backend/profile.php">Hồ sơ</a></li>
-                <li class="nav-item"><a class="nav-link" href="../backend/order_history.php">Lịch sử đơn hàng</a></li>
-                <li class="nav-item"><a class="nav-link" href="../backend/cart.php">Giỏ hàng</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/profile.php">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/order_history.php">Order History</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/cart.php">Cart</a></li>
                 <li class="nav-item"><a class="nav-link" href="../backend/admin.php">Admin</a></li>
-                <li class="nav-item"><a class="nav-link" href="../backend/logout.php">Đăng xuất</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/logout.php">Log out</a></li>
             </ul>
         </div>
     </nav>
@@ -41,22 +41,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             <div class="carousel-item active">
                 <img src="/frontend/asset/slide1.jpg" class="d-block w-100" alt="Slide 1">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Chào mừng đến với Jewelry Store</h5>
-                    <p>Khám phá những món trang sức tinh tế nhất.</p>
+                    <h5>Welcome to Jewelry Store</h5>
+                    <p>Discover the finest jewelry pieces.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="/frontend/asset/slide2.jpg" class="d-block w-100" alt="Slide 2">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Thiết kế độc đáo</h5>
-                    <p>Trang sức được chế tác thủ công với sự tỉ mỉ.</p>
+                    <h5>Unique Designs</h5>
+                    <p>Handcrafted jewelry with meticulous care.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="/frontend/asset/slide3.png" class="d-block w-100" alt="Slide 3">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Ưu đãi đặc biệt</h5>
-                    <p>Giảm giá lên đến 20% trong tuần này!</p>
+                    <h5>Special Offers</h5>
+                    <p>Up to 20% off this week!</p>
                 </div>
             </div>
         </div>
@@ -71,28 +71,28 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     </div>
 
     <div class="container mt-4">
-        <h1>Sản phẩm</h1>
+        <h1>Products</h1>
         <form id="search-form" class="mb-4">
             <div class="row">
                 <div class="col-md-3 col-sm-6 mb-3">
-                    <input type="text" class="form-control" id="search" placeholder="Tìm kiếm sản phẩm..." name="search">
+                    <input type="text" class="form-control" id="search" placeholder="Search for products..." name="search">
                 </div>
                 <div class="col-md-3 col-sm-6 mb-3">
                     <select class="form-control" id="category" name="category">
-                        <option value="">Tất cả danh mục</option>
+                        <option value="">All</option>
                         <option value="1">Men's Fashion</option>
                         <option value="2">Women's Fashion</option>
                         <option value="3">Accessories</option>
                     </select>
                 </div>
                 <div class="col-md-2 col-sm-6 mb-3">
-                    <input type="number" class="form-control" id="min-price" placeholder="Giá tối thiểu" name="min_price">
+                    <input type="number" class="form-control" id="min-price" placeholder="Minimum Price" name="min_price">
                 </div>
                 <div class="col-md-2 col-sm-6 mb-3">
-                    <input type="number" class="form-control" id="max-price" placeholder="Giá tối đa" name="max_price">
+                    <input type="number" class="form-control" id="max-price" placeholder="Maximum Price" name="max_price">
                 </div>
                 <div class="col-md-2 col-sm-6 mb-3">
-                    <button type="submit" class="btn btn-primary w-100">Tìm</button>
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
                 </div>
             </div>
         </form>
