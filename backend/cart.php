@@ -22,49 +22,76 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 
+
 $sql = "SELECT p.*, c.id AS cart_id FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = " . $_SESSION['user_id'];
 $result = $conn->query($sql);
+$cart_items = [];
+while ($row = $result->fetch_assoc()) {
+    $cart_items[] = $row;
+}
+$cart_count = count($cart_items); 
+
+
+if (isset($_GET['delete'])) {
+    $cart_id = $_GET['delete'];
+    $conn->query("DELETE FROM cart WHERE id = $cart_id AND user_id = " . $_SESSION['user_id']);
+    header("Location: cart.php");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng</title>
+    <title>Cart</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../frontend/css/style.css">
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
+        <a class="navbar-brand" href="#">Jewelry Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../frontend/user.php">Back</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mt-5">
-        <h1>Giỏ hàng</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Tên</th>
-                    <th>Giá</th>
-                    <th>Ảnh</th>
-                    <th>Hành động</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()) { ?>
+        <h1>Cart</h1>
+        <?php if ($cart_count == 0) { ?>
+            <p>Your cart is empty!</p>
+        <?php } else { ?>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['price']; ?></td>
-                        <td><img src="../uploads/<?php echo $row['image']; ?>" width="50"></td>
-                        <td><a href="cart.php?delete=<?php echo $row['cart_id']; ?>" class="btn btn-danger btn-sm">Xóa</a></td>
+                        <th>Name</th>
+                        <th>Cost</th>
+                        <th>Image</th>
+                        <th>Action</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-        <a href="payment.php" class="btn btn-primary">Thanh toán</a>
+                </thead>
+                <tbody>
+                    <?php foreach ($cart_items as $row) { ?>
+                        <tr>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo number_format($row['price']); ?> VND</td>
+                            <td><img src="../uploads/<?php echo $row['image']; ?>" width="50"></td>
+                            <td><a href="cart.php?delete=<?php echo $row['cart_id']; ?>" class="btn btn-danger btn-sm">Remove</a></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <a href="checkout.php?checkout=true" class="btn btn-primary">Payment</a>
+        <?php } ?>
     </div>
 </body>
 </html>
-<?php
-if (isset($_GET['delete'])) {
-    $cart_id = $_GET['delete'];
-    $conn->query("DELETE FROM cart WHERE id = $cart_id AND user_id = " . $_SESSION['user_id']);
-    header("Location: cart.php");
-}
-?>

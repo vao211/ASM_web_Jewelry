@@ -49,22 +49,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../frontend/css/style.css">
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
+        <a class="navbar-brand" href="#">Jewelry Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="checkout.php">Back</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mt-5 text-center">
         <?php if (!isset($order_id)) { ?>
-            <h1>Chọn phương thức thanh toán</h1>
+            <h1>Choose payment method</h1>
             <form method="POST">
                 <div class="mb-3">
-                    <label><input type="radio" name="payment_method" value="credit_card" checked> Thẻ tín dụng</label><br>
-                    <label><input type="radio" name="payment_method" value="e_wallet"> Ví điện tử</label><br>
-                    <label><input type="radio" name="payment_method" value="bank_transfer"> Chuyển khoản</label>
+                    <label><input type="radio" name="payment_method" value="credit_card" checked>Credit card</label><br>
+                    <label><input type="radio" name="payment_method" value="e_wallet">E-Wallet</label><br>
+                    <label><input type="radio" name="payment_method" value="bank_transfer">Bank transfer</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Tiếp tục</button>
+                <button type="submit" class="btn btn-primary">Go</button>
             </form>
         <?php } else { ?>
-            <h1>Quét mã QR để thanh toán</h1>
+            <h1>Scan QR code to pay</h1>
             <img src="qr.png" alt="QR Code">
             <br><br>
-            <button onclick="alert('Thanh toán thành công!'); window.location.href='../frontend/user.php'" class="btn btn-primary">OK</button>
+            <button onclick="alert('Payment Successful!'); window.location.href='../frontend/user.php'" class="btn btn-primary">OK</button>
         <?php } ?>
     </div>
 </body>
