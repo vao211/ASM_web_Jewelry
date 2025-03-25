@@ -12,6 +12,7 @@ function loadProducts(search = '', category = '', minPrice = '', maxPrice = '') 
                             <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
                                 <p class="card-text">${product.price} VND</p>
+                                <p class="card-description">${product.description}</p>
                                 <button class="btn btn-primary" onclick="addToCart(${product.id})">Thêm vào giỏ</button>
                             </div>
                         </div>

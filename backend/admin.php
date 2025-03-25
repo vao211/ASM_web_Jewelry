@@ -110,12 +110,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên</th>
-                    <th>Danh mục</th>
-                    <th>Giá</th>
-                    <th>Tồn kho</th>
-                    <th>Ảnh</th>
-                    <th>Hành động</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Cost</th>
+                    <th>Stocks</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -127,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <td><?php echo $row['price']; ?></td>
                         <td><?php echo $row['stock']; ?></td>
                         <td><img src="../uploads/<?php echo $row['image']; ?>" width="50"></td>
+                        <td><?php echo $row['description']; ?></td>
                         <td>
                             <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
                             <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Xóa</a>

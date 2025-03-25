@@ -40,6 +40,20 @@
     margin: 0;
 }
 
+.card-description {
+    display: none;
+    margin: 10px 0;
+    color: #555;
+    font-size: 14px;
+    transition: opacity 0.3s ease; 
+    opacity: 0;
+}
+
+.card:hover .card-description {
+    display: block; 
+    opacity: 1; 
+}
+
 @media (max-width: 768px) {
     .navbar-nav {
         text-align: center;
