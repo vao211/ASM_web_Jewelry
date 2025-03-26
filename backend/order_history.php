@@ -20,7 +20,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,6 +38,7 @@ $result = $stmt->get_result();
                     <th>Total Amount</th>
                     <th>Status</th>
                     <th>Payment Method</th>
+                    <th>Message</th>
                     <th>Order Date</th>
                     <th>Products</th>
                 </tr>
@@ -55,6 +56,7 @@ $result = $stmt->get_result();
                         <td><?php echo $row['total']; ?> VND</td>
                         <td><?php echo $row['status']; ?></td>
                         <td><?php echo $row['payment_method']; ?></td>
+                        <td><?php echo $row['admin_message'] ?></td>
                         <td><?php echo $row['created_at']; ?></td>
                         <td><?php echo $row['name'] . " (x" . $row['quantity'] . ", " . $row['price'] . " VND)"; ?>
                 <?php } else { ?>
