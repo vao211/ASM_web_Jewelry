@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 
 $sql = "
-    SELECT o.id, o.user_id, u.username, o.total, o.status, o.created_at, o.payment_method 
+    SELECT o.id, o.user_id, u.username, o.total, o.status, o.created_at, o.payment_method, o.admin_message
     FROM orders o 
     JOIN users u ON o.user_id = u.id 
     ORDER BY o.created_at DESC";
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: admin_orders.php");
         exit();
     } else {
-        $error = "Có lỗi xảy ra: " . $conn->error;
+        $error = "Error occurs " . $conn->error;
     }
     $stmt->close();
 }
@@ -76,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <th>Total</th>
                     <th>Payment method</th>
                     <th>Status</th>
+                    <th>Message</th>
                     <th>Timestamp</th>
                     <th>Action</th>
                 </tr>
@@ -88,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td><?php echo number_format($row['total'], 2); ?> VND</td>
                         <td><?php echo $row['payment_method']; ?></td>
                         <td><?php echo $row['status']; ?></td>
+                        <td><?php echo $row['admin_message']; ?></td>
                         <td><?php echo $row['created_at']; ?></td>
                         <td>
                             <?php if ($row['status'] === 'pending') { ?>
