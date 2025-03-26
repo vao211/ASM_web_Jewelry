@@ -10,7 +10,8 @@ CREATE TABLE users (
     address TEXT,
     phone VARCHAR(20),
     role ENUM('user', 'admin') DEFAULT 'user',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    image VARCHAR(500)
 );
 
 CREATE TABLE categories (
@@ -27,6 +28,7 @@ CREATE TABLE products (
     image VARCHAR(255),
     description TEXT,
     stock INT DEFAULT 0,
+    detail_image VARCHAR(5000),
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
 );
 
@@ -47,6 +49,7 @@ CREATE TABLE orders (
     status ENUM('pending', 'processing', 'completed', 'cancelled') DEFAULT 'pending',
     payment_method ENUM('credit_card', 'e_wallet', 'bank_transfer') DEFAULT 'credit_card',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    admin_message TEXT,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -60,8 +63,6 @@ CREATE TABLE order_details (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
-ALTER TABLE orders
-ADD COLUMN admin_message TEXT;
 
 INSERT INTO categories (name, description) VALUES 
 ('Men''s Fashion', 'Thời trang nam'),

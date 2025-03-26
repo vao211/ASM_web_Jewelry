@@ -1,9 +1,8 @@
 <?php
-try{
+try {
     include 'config.php';
-}
-catch(Exception $e){
-    echo ''.$e->getMessage().'';
+} catch (Exception $e) {
+    echo '' . $e->getMessage() . '';
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,53 +13,73 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address = $_POST['address'];
     $phone = $_POST['phone'];
 
-    //check user name ton tai hay chua
+
+    $default_avatar = 'avatar/default/default.png';
+    $image = $default_avatar; 
+
+
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+        $target_dir = "../avatar/user/";
+        $image_name = uniqid() . '_' . basename($_FILES["image"]["name"]);
+        $target_file = $target_dir . $image_name;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+
+        $check = getimagesize($_FILES["image"]["tmp_name"]);
+        if ($check === false) {
+            echo "File is not an image";
+            exit();
+        }
+        if ($_FILES["image"]["size"] > 200000000) { 
+            echo "File to big!";
+            exit();
+        }
+        if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
+            echo "Only accept JPG, JPEG, PNG, GIF.";
+            exit();
+        }
+
+        //Up file vào thư mục avatar/user/
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            $image = "avatar/user/" . $image_name;
+        } else {
+            echo "Lỗi khi upload ảnh.";
+            exit();
+        }
+    }
+
+
     $checkUsernameSQL = "SELECT * FROM users WHERE username = ?";
-    $cmd = $conn -> prepare($checkUsernameSQL);
-    $cmd->bind_param("s", $username); //bind s(string ) -> ? = username
+    $cmd = $conn->prepare($checkUsernameSQL);
+    $cmd->bind_param("s", $username);
     $cmd->execute();
     $result = $cmd->get_result();
-    //param se la 1 tham so chu khong phai 1 phan cua cau lenh sql, sql xu ly duoi dang 1 chuoi an toan
-    /* 
-    SELECT * FROM users WHERE username = 'admin\' OR \'1\'=\'1';
-    nó sẽ tìm một bản ghi có username là admin' OR '1'='1 (chi nhan dau ' o dau va cuoi)
-    */
 
-    //check email ton tai hay chua
     $checkEmailSQL = "SELECT * FROM users WHERE email = ?";
     $emailCmd = $conn->prepare($checkEmailSQL);
-    $emailCmd->bind_param("s", $email); // bind s (string) -> ? = email
+    $emailCmd->bind_param("s", $email);
     $emailCmd->execute();
     $emailResult = $emailCmd->get_result();
 
     if ($result->num_rows > 0) {
-        echo"Username existed";
-    }
-
-    if ($emailResult->num_rows > 0) {
-        echo "Email already exists.<br>";
-    }
-
-    else {
-        $sql = "INSERT INTO users (username, password, email, full_name, address, phone) 
-                VALUES (?, ?, ?, ? ,?,?)";
-
-        $cmd = $conn -> prepare($sql);
-        $cmd->bind_param('ssssss', $username, $password, $email, $full_name, $address, $phone);
+        echo "Username đã tồn tại.";
+    } elseif ($emailResult->num_rows > 0) {
+        echo "Email đã tồn tại.";
+    } else {
+        $sql = "INSERT INTO users (username, password, email, full_name, address, phone, image) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $cmd = $conn->prepare($sql);
+        $cmd->bind_param('sssssss', $username, $password, $email, $full_name, $address, $phone, $image);
 
         if ($cmd->execute()) {
-            header("Location: login.php"); //Login sau khi register
-            echo "Register success!";
+            header("Location: login.php"); 
             exit();
-        } 
-        else {
+        } else {
             echo "Lỗi: " . $conn->error;
         }
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,12 +88,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../frontend/css/style.css">
-</head>
+    <link rel="stylesheet" href="../frontend/css/style.css">   
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    </head>
 <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
+        <a class="navbar-brand" href="#">Jewelry Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html">Back</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h1>Register</h1>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
@@ -98,6 +133,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="mb-3">
                 <label for="phone" class="form-label">Phone Number</label>
                 <input type="text" class="form-control" id="phone" name="phone">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Avatar (Optinal)</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>

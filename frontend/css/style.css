@@ -123,3 +123,22 @@
         height: 200px;
     }
 }
+
+.navbar-nav .nav-link img {
+    vertical-align: middle;
+    margin-top: -5px; 
+}
+
+.notification {
+    position: fixed;
+    top: 20px;               
+    left: 50%;       
+    transform: translateX(-50%);
+    background-color: #28a745;  
+    color: white;  
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;  
+    transition: opacity 0.5s ease;
+    opacity: 0;   
+}

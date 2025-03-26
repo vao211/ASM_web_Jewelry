@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>User editor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../frontend/css/style.css">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">

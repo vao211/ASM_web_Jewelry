@@ -21,6 +21,7 @@ $result = $conn->query($sql);
     <title>Quản lý User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../frontend/css/style.css">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
@@ -40,6 +41,7 @@ $result = $conn->query($sql);
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Avatar</th>
                     <th>ID</th>
                     <th>UserName</th>
                     <th>Email</th>
@@ -53,6 +55,9 @@ $result = $conn->query($sql);
             <tbody>
                 <?php while ($row = $result->fetch_assoc()) { ?>
                     <tr>
+                        <td>
+                         <img src="../<?php echo htmlspecialchars($row['image']); ?>" alt="Product Image" onerror="this.onerror=null; this.src='../avatar/default/noInfo.png';">
+                        </td>
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['email']; ?></td>

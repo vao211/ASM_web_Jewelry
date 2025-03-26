@@ -1,0 +1,18 @@
+# Bỏ qua thư mục img và tất cả ảnh bên trong
+img/
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Bỏ qua file router.php
+router.php
+
+# Bỏ qua thư mục phpscripts và tất cả bên trong
+phpscripts/
+
+# Bỏ qua file qr.png
+qr.png
+
+# Bỏ qua cả file .gitignore
+.gitignore
