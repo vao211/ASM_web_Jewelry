@@ -115,12 +115,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
-        <a class="navbar-brand" href="#">Admin Panel</a>
-        <div class="collapse navbar-collapse">
+<nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
+        <a class="navbar-brand" href="#">Jewelry Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="logout.php">Log Out</a></li>
-                <li class="nav-item"><a class="nav-link" href="admin.php">Manage Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/profile.php">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/logout.php">Log out</a></li>
+                <li class="nav-item"><a class="nav-link" href="../backend/admin.php">Quit</a></li>
             </ul>
         </div>
     </nav>

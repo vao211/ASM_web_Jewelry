@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <div class="container mt-4">
-        <h1>Quản lý đơn hàng</h1>
+        <h1>Order manager</h1>
         <?php if (isset($error)) { echo "<p class='text-danger'>$error</p>"; } ?>
         <table class="table table-striped">
             <thead>

@@ -56,7 +56,8 @@ $result = $conn->query($sql);
                 <?php while ($row = $result->fetch_assoc()) { ?>
                     <tr>
                         <td>
-                         <img src="../<?php echo htmlspecialchars($row['image']); ?>" alt="Product Image" onerror="this.onerror=null; this.src='../avatar/default/noInfo.png';">
+                         <img src="../<?php echo htmlspecialchars($row['image']); ?>" alt="Product Image" onerror="this.onerror=null; this.src='../avatar/default/noInfo.png';", 
+                         style="max-width:10%; max-height:10%">
                         </td>
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['username']; ?></td>
