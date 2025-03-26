@@ -94,5 +94,6 @@ if (isset($_GET['delete'])) {
             <a href="checkout.php?checkout=true" class="btn btn-primary">Payment</a>
         <?php } ?>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

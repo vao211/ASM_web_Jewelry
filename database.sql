@@ -24,7 +24,7 @@ CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     category_id INT,
     name VARCHAR(100) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
+    price DECIMAL(10) NOT NULL,
     image VARCHAR(255),
     description TEXT,
     stock INT DEFAULT 0,

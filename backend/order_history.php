@@ -30,20 +30,25 @@ $result = $stmt->get_result();
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
-        <a class="navbar-brand" href="#">Jewelry Store</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/frontend/user.php">Back</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
+    <a class="navbar-brand" href="#">Jewelry Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/frontend/user.php">Back</a>
+            </li>
+            <?php if (isset($_SESSION['user_id'])) { ?>
+                <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+            <?php } else { ?>
+                <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.php">Register</a></li>
+            <?php } ?>
+        </ul>
+    </div>
+</nav>
 
     <div class="container mt-5">
         <h1>Order History</h1>
@@ -81,5 +86,6 @@ $result = $stmt->get_result();
             </tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

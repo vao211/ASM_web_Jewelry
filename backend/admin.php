@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO products (category_id, name, price, image, description, stock, detail_image) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isdsiss", $category_id, $name, $price, $main_image, $description, $stock, $detail_image_string);
+    $stmt->bind_param("isdssis", $category_id, $name, $price, $main_image, $description, $stock, $detail_image_string);
 
     if ($stmt->execute()) {
         header("Location: admin.php");
@@ -188,5 +188,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
