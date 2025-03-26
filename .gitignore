@@ -1,9 +1,5 @@
 # Bỏ qua thư mục img và tất cả ảnh bên trong
 img/
-*.jpg
-*.jpeg
-*.png
-*.gif
 
 # Bỏ qua file router.php
 router.php
