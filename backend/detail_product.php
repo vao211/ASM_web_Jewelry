@@ -37,6 +37,7 @@ $detail_images = !empty($product['detail_image']) ? explode(',', $product['detai
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body>
+<div id="notification" class="notification" style="display: none;">notification</div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light-blue">
         <a class="navbar-brand" href="#">Jewelry Store</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
