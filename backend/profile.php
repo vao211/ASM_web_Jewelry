@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>Personal Profile</h1>
         <form method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-                <label class="form-label">Avatar hiện tại</label><br>
+                <label class="form-label">Avatar</label><br>
                 <img src="../<?php echo htmlspecialchars($user['image']); ?>" alt="Avatar" width="100" class="rounded">
             </div>
             <div class="mb-3">
@@ -137,4 +137,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<!-- B74p4)T0z+6X^L=VSw%7 -->
 </html>
