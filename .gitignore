@@ -12,3 +12,5 @@ qr.png
 
 # Bỏ qua cả file .gitignore
 .gitignore
+
+vendor/
