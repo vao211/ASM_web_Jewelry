@@ -1,11 +1,15 @@
+/* body {
+    background: linear-gradient(to left, #7fb8e6, #1d53db);
+} */
 .bg-light-blue {
-    background-color: #2f55d1;
+    /* background-color: #2f55d1; */
+    background: linear-gradient(to left, #209CFF, #68E0CF);
 }
 .navbar-brand, .nav-link {
     color: #fff !important;
 }
 .btn-primary {
-    background-color: #87CEEB;
+    background-color: #07d6d6;
     border: none;
 }
 
@@ -34,7 +38,9 @@
     flex-direction: column; 
     flex: 1; 
     justify-content: space-between; 
+    background: linear-gradient(to right, #add0ee, #c8e2de);
 }
+
 
 .card-title, .card-text {
     margin: 0;
