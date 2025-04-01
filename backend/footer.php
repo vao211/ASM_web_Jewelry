@@ -15,7 +15,7 @@
                 <div class="col-md-4 mb-3">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="/index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="../frontend/user.php" class="text-white text-decoration-none">Home</a></li>
                         <li><a href="../frontend/user.php" class="text-white text-decoration-none">Shop</a></li>
                         <li><a href="../backend/cart.php" class="text-white text-decoration-none">Cart</a></li>
                         <li><a href="../backend/login.php" class="text-white text-decoration-none">Login</a></li>
