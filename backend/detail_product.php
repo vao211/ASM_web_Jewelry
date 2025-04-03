@@ -64,7 +64,8 @@ $detail_images = !empty($product['detail_image']) ? explode(',', $product['detai
                 <img src="../uploads/<?php echo htmlspecialchars($product['image']); ?>" class="img-fluid main-image" id="mainImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
                 <div class="mt-3 detail-images" id="detailImages">
                     <?php foreach ($detail_images as $img) { ?>
-                        <img src="../<?php echo htmlspecialchars(trim($img)); ?>" class="img-thumbnail detail-image" style="width: 100px; height: 100px; object-fit: cover; cursor: pointer;" alt="Detail Image" onclick="swapImage(this)">
+                        <img src="../<?php echo htmlspecialchars(trim($img)); ?>" class="img-thumbnail detail-image" 
+                        style="width: 100px; height: 100px; object-fit: cover; cursor: pointer;" alt="Detail Image" onclick="swapImage(this)">
                     <?php } ?>
                 </div>
             </div>

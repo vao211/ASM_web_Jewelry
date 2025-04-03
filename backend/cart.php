@@ -87,7 +87,7 @@ if (isset($_GET['delete'])) {
                     <?php } ?>
                 </tbody>
             </table>
-            <a href="checkout.php?checkout=true" class="btn btn-primary">Payment</a>
+            <a href="checkout.php?checkout=true" class="btn btn-primary">Process to checkout</a>
         <?php } ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
