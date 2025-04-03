@@ -9,8 +9,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +33,6 @@ $result = $conn->query($sql);
             </ul>
         <!-- </div> -->
     </nav>
-
 
     <h2>User Management</h2>
         <table class="table table-striped">

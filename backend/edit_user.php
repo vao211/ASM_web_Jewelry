@@ -6,13 +6,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../index.html");
     exit();
 }
-
 //_POST trong form
 if (!isset($_GET['id']) && !isset($_POST['edit_id'])) {
     header("Location: admin_users.php");
     exit();
 }
-
 if (isset($_GET['id'])) {
     $edit_id = $_GET['id'];
 } 
@@ -22,13 +20,11 @@ elseif (isset($_POST['edit_id'])) {
 else {
     $edit_id = null;
 }
-
 //check exist and valid id
 if ($edit_id <= 0) {
     echo "Invalid user ID!";
     exit();
 }
-
 $sql = "SELECT * FROM users WHERE id = ?";
 $stm = $conn->prepare($sql);
 $stm->bind_param("i", $edit_id);
@@ -41,7 +37,6 @@ if ($edit_result->num_rows == 0) {
 }
 
 $edit_user = $edit_result->fetch_assoc();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];

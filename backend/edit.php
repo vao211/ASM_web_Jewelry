@@ -6,23 +6,18 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../index.html");
     exit();
 }
-
-
 if (!isset($_GET['id']) && !isset($_POST['edit_id'])) {
     header("Location: admin.php");
     exit();
 }
-
 $edit_id = isset($_GET['id']) ? $_GET['id'] : (isset($_POST['edit_id']) ? $_POST['edit_id'] : null);
 $edit_result = $conn->query("SELECT * FROM products WHERE id=$edit_id");
 $edit_product = $edit_result->fetch_assoc();
 $categories = $conn->query("SELECT * FROM categories");
-
 if (!$edit_product) {
     header("Location: admin.php");
     exit();
 }
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $price = $_POST['price'];
@@ -88,7 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
-
     $detail_image_string = implode(',', $new_detail_images);
 
     $sql = "UPDATE products SET name=?, price=?, category_id=?, description=?, stock=?, image=?, detail_image=? WHERE id=?";

@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'config.php';
-
 if (!isset($_SESSION['user_id'])) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode(['status' => 'error', 'message' => 'Please login first!']);
@@ -22,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
 }
 
-
 $sql = "SELECT p.*, c.id AS cart_id FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = " . $_SESSION['user_id'];
 $result = $conn->query($sql);
 $cart_items = [];
@@ -31,14 +29,12 @@ while ($row = $result->fetch_assoc()) {
 }
 $cart_count = count($cart_items); 
 
-
 if (isset($_GET['delete'])) {
     $cart_id = $_GET['delete'];
     $conn->query("DELETE FROM cart WHERE id = $cart_id AND user_id = " . $_SESSION['user_id']);
     header("Location: cart.php");
     exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="vi">

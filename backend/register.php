@@ -62,9 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $emailResult = $emailCmd->get_result();
 
     if ($result->num_rows > 0) {
-        echo "Username đã tồn tại.";
+        echo "Username already exists.";
     } elseif ($emailResult->num_rows > 0) {
-        echo "Email đã tồn tại.";
+        echo "Email already exists.";
     } else {
         $sql = "INSERT INTO users (username, password, email, full_name, address, phone, image) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)";

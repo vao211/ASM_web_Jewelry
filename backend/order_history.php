@@ -19,6 +19,7 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>

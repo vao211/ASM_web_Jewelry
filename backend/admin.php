@@ -60,10 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
-
     // split by ,
     $detail_image_string = implode(',', $detail_images);
-
     $sql = "INSERT INTO products (category_id, name, price, image, description, stock, detail_image) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);

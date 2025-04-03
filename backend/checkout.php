@@ -6,15 +6,12 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
 if (!isset($_GET['checkout']) || $_GET['checkout'] !== 'true') {
     header("Location: cart.php");
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
-
-
 $stmt = $conn->prepare("SELECT full_name, phone, address FROM users WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -22,11 +19,9 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 $stmt->close();
 
-
 $fullname = $user['full_name'] ?? '';
 $phone = $user['phone'] ?? '';
 $address = $user['address'] ?? '';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fullname = $_POST['fullname'];
@@ -80,15 +75,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="fullname" class="form-label">Full name</label>
-                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Nhập họ và tên" value="<?php echo htmlspecialchars($fullname); ?>" required>
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your full name" value="<?php echo htmlspecialchars($fullname); ?>" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="phone" class="form-label">Phone</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại" value="<?php echo htmlspecialchars($phone); ?>" required>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" value="<?php echo htmlspecialchars($phone); ?>" required>
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="address" class="form-label">Address</label>
-                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Nhập địa chỉ giao hàng" required><?php echo htmlspecialchars($address); ?></textarea>
+                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your shipping address" required><?php echo htmlspecialchars($address); ?></textarea>
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary w-100">Confirm</button>
