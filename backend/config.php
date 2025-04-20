@@ -31,9 +31,9 @@ if (getenv("JAWSDB_URL")) {
     $dbname = ltrim($dbUrl["path"], "/");
     $port = $dbUrl["port"] ?: 3306;
 } else {
-    $servername = "Vubuntu.vinh.com";
-    $username = "vao211";
-    $password = "Vinh2112005";
+    $servername = "localhost:3306";
+    $username = "root";
+    $password = "";
     $dbname = "jewelry_db";
     $port = 3306;
 }
