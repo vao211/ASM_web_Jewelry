@@ -35,7 +35,7 @@
 $servername = "localhost";
 $username = "nctlhlqmhosting_vaolu211";
 $password = "Vinh2112005."; // Thay bằng mật khẩu của user nctlhlqmhosting_vaolu211
-$dbname = "vjwelry"; // Xác minh tên cơ sở dữ liệu trong cPanel
+$dbname = "nctlhlqmhosting_vjewelry"; // Xác minh tên cơ sở dữ liệu trong cPanel
 $port = 3306; // Mặc định cho MySQL trên iNET
 
 // Tạo kết nối
