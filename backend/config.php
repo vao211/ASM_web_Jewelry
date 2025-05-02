@@ -32,22 +32,23 @@
 // }
 
 // Thông tin kết nối cơ sở dữ liệu cho iNET hosting
-$servername = "localhost";
-$username = "nctlhlqmhosting_vaolu211";
-$password = "Vinh2112005."; // Thay bằng mật khẩu của user nctlhlqmhosting_vaolu211
-$dbname = "nctlhlqmhosting_vjewelry"; // Xác minh tên cơ sở dữ liệu trong cPanel
-$port = 3306; // Mặc định cho MySQL trên iNET
 
-// Tạo kết nối
+
+require_once '/home/nctlhlqmhosting/db_config.php';
+
+$servername = getenv('DB_HOST') ?: 'localhost';
+$username = getenv('DB_USER') ?: 'nctlhlqmhosting_vaolu211';
+$password = getenv('DB_PASS') ?: '';
+$dbname = getenv('DB_NAME') ?: 'nctlhlqmhosting_vjewelry';
+$port = getenv('DB_PORT') ?: 3306;
+
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
-// Kiểm tra kết nối
 if ($conn->connect_error) {
-    die("Kết nối thất bại: " . $conn->connect_error);
-} else {
-    // echo "Kết nối thành công!";
-}
 
-// Đặt encoding UTF-8 để hỗ trợ tiếng Việt (nếu cần)
+}
 $conn->set_charset("utf8mb4");
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    die('Truy cập trực tiếp bị cấm');
+}
 ?>
